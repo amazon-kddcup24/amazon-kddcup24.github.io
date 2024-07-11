@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-S0FLVX7GFE"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'G-S0FLVX7GFE');
+	</script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="KDD Cup 2022 Workshop: The primary objective of this competition is to build new ranking strategies and, simultaneously, identify interesting categories of results (i.e., substitutes) that can be used to improve the customer experience when searching for products." />
+        <meta name="author" content="Nurendra Choudhary" />
+        <title>KDD Cup 2023 Workshop: Multilingual Session Recommendation Challenge</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#" style="font-size:x-large;">
+                    <img src="assets/amz_logo.png" height="30" alt="">
+                    <!-- &nbsp;&nbsp;<span><i class="fa-brands fa-amazon"></i></span> -->
+                </a>    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav nav-pills ms-auto" style="font-size:medium; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#intro" >INTRODUCTION</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#program">PROGRAM</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#papers">ACCEPTED PAPERS</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#submission">SUBMISSION GUIDELINES</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#dates">DATES</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#organizers">ORGANIZERS</a></li>&nbsp;&nbsp;
+                        <li class="nav-item"><a class="nav-link" style="color:white;" href="#data">DATA</a></li>&nbsp;&nbsp;
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="text-white" style="background:transparent url('assets/opener23.png') no-repeat center center /cover; opacity: 0.7;">
+            <div class="container px-4 text-center" 
+            style="background: rgba(0, 0, 0, 0.8); font-size:medium; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                <h1 class="fw-bolder" style="color:ivory;">KDD Cup 2023 Workshop:</h1>
+                <h2 class="fw-bolder">Multilingual Session Recommendation Challenge</h2>
+                <p>Held in conjunction with <a style="color:#e77725;" href="https://kdd.org/kdd2023/">KDD'23</a>
+                    Aug 6, 2023 - Aug 10, 2023, Long Beach, CA, USA</p>
+            </div>
+        </header>
+        <!-- Intro section-->
+        <section style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="intro">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">INTRODUCTION</h2>
+                        <p style="text-align: justify;">
+                        The objective of this workshop is to discuss the winning submissions of the 
+                            KDDCup 2023 Challenge on Multilingual Session Recommendation Challenge. In this challenge, we introduce the “Amazon Multilingual Multi-locale Session Dataset (Amazon-M2)”, 
+                            a collection of anonymized customer sessions containing products from six different locales: English, German, Japanese, French, Italian, and Spanish, 
+                            published with the aim of encouraging the development of multilingual recommendation systems, which can enhance personalization and understanding of global trends and preferences.  
+                            For each session, the dataset provides a list of product IDs (Amazon ASIN numbers) interacted by the current user, together with the additional product features.
+                            More details of this challenge are available here: <a href="https://www.aicrowd.com/challenges/amazon-kdd-cup-23-multilingual-recommendation-challenge">[Challenge Link]</a>, <a href="https://arxiv.org/abs/2307.09688">[Dataset Paper Link]</a> and <a href="https://openreview.net/group?id=KDD.org/2023/Workshop/Cup">[OpenReview Link]</a>.
+                        <!-- </p> -->
+                        <br>
+                      <!--
+                        <h3>Objective and Tasks</h3>
+                        The primary objective of this competition is to build new session recommender system which understands the 
+                        shopping intentions and improves the shopping experimence of worldwide customers from different locales.
+                        The three different tasks for this KDD Cup competition using the Shopping Session Dataset are:<br/>
+                        <ol>
+                            <li><b>Next Product Recommendation:</b> Given a session data and the attributes of each product, the goal of this task is to predict the next product that a customer is likely to engage with. The test set for Task 1 comprises data from popular locales, i.e., English, German, and Japanese locales. </li>
+                            <li><b>Next Product Recommendation for Underrepresented Languages/Locales:</b> The goal of this task is similar to Task1 while the test set is constructed from the underepresented locales, i.e., French, Italian, and Spanish.</li>
+                            <li><b>Next Product Title Generation:</b> Given a session data and the attributes of each product, the goal of this task is to predict the title of the next product that a customer will engage with. Unlike Tasks 1 and 2, which focus on recommending existing products, predicting new or "cold-start" products presents a unique challenge.</li>
+                        </ol>
+                      -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Program section-->
+        <section class="bg-light" style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="program">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">SCHEDULE</h2>
+                        <p style="text-align: center;">August 9, 2023, 1:00PM–5:00PM (PST), Long Beach, CA, USA.</p>
+                        <p style="text-align: center;">204, Long Beach Convention &amp; Entertainment Center</p>
+                        <p style="text-align: center;">This will be a hybrid session. Zoom link will be provided later.</p>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-book-open" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Opening</h5>
+                                    <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;1:00-1:30 PM</h5>
+                                  </div>
+                                  <p class="mb-1">
+                                    Introduction by organizers.&nbsp;&nbsp;
+                                    <br><b>Moderator:</b> <a href="http://cse.msu.edu/~jinwei2/" style="color: black;">Dr. Wei Jin</a>, Assistant Professor at Emory University 
+                                    <br><b>Speaker:</b> <a href="https://www.tangxianfeng.net/" style="color: black;"> Dr. Xianfeng Tang</a>, Senior Applied Scientist at Amazon 
+                                    <!--
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="window.open('slides/KDDCup.pdf')">Slides</button>
+                                    -->
+                                  </p>
+                                </div>
+                                <div class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-bars-progress" style="color:#0275d8;"></i></span>&nbsp;&nbsp; Invited Speaker</h5>
+                                    <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;1:30-2:10 PM</h5>
+                                  </div>
+                                  <p class="mb-1">
+                                    <ul>
+<img src="images/haixun.jpg" alt="Description of image" style="float: left; margin-right: 10px; width: 180px; height: 230px;"> 
+                                         
+<a href="https://haixun.github.io/" style="color: black;"><b>Dr. Haixun Wang</b></a>
+                                        <br>VP Engineering, Algorithms &amp; Distinguished Scientist at Instacart 
+                                        <br><br><b>Title:</b> LLMs and Generative AI for E-Commerce 
+                                        <br><b>Abstract:</b>  In this talk, I will discuss the current status and challenges of product search. In particular, I will highlight the significant effort it takes to create a high-quality product search engine using classical information retrieval methods. Then, I will discuss how recent advances in arge pre-trained language models, may change the status quo. While embedding-based retrieval has the potential to improve classical information retrieval methods, creating a machine learning-based, end-to-end system for general-purpose web search is still extremely difficult. Nevertheless, I will argue that product search for e-commerce may prove to be an area where LLMs can create the first disruption to classical information retrieval systems. 
+                                    </ul>
+                                  </p>
+                                </div>
+                                <div class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-bars-progress" style="color:#0275d8;"></i></span>&nbsp;&nbsp; Invited Speaker</h5>
+                                    <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;2:10-2:50 PM</h5>
+                                  </div>
+                                  <p class="mb-1">
+                                    <ul>
+<img src="images/jian.jpeg" alt="Description of image" style="float: left; margin-right: 10px; width: 200px; height: 200px;"> 
+<a href="https://sites.duke.edu/jianpei/" style="color: black;"><b>Dr. Jian Pei </b></a>
+<br> Arthur S. Pearse Distinguished Professor at Duke University 
+<br>
+<br> <b>Title:</b>  Data and AI Markets for E-Commerce 
+<br> <b>Abstract:</b>  In the ever-evolving landscape of e-commerce, seamless collaboration between multiple parties is essential to offer comprehensive and end-to-end services transcending supplier, provider, and market sector boundaries. A critical aspect of such cooperation lies in the sharing of data and AI models among these parties. However, data and AI model sharing pose significant challenges. In this enlightening talk, I will unveil insightful strategies and blueprints for establishing data and AI markets tailored to the e-commerce domain. These markets will facilitate efficient data and AI model sharing, discovery, and integration. I will delve into the latest technical advancements while addressing the potential hurdles and opportunities. 
+<!--<b>Abstract:</b> In the ever-evolving landscape of e-commerce, seamless collaboration between multiple parties is essential to offer comprehensive and end-to-end services transcending supplier, provider, and market sector boundaries. A critical aspect of such cooperation lies in the sharing of data and AI models among these parties. However, data and AI model sharing pose significant challenges. In this enlightening talk, I will unveil insightful strategies and blueprints for establishing
+data and AI markets tailored to the e-commerce domain. These markets will facilitate efficient data and AI model sharing, discovery, and integration. I will delve into the latest technical advancements while addressing the potential hurdles and opportunities. -->
+                                    </ul>
+                                  </p>
+                                </div>
+
+                                <div class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-bars-progress" style="color:#0275d8;"></i></span>&nbsp;&nbsp; Oral Presentations</h5>
+                                    <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;2:50-4:35 PM</h5>
+                                  </div>
+                                  <p class="mb-1">
+                                    <ul>
+                                      <li> <b>Team: </b> NVIDIA-Merlin 
+                                      <br> <b>Title</b>: <a href="https://openreview.net/attachment?id=J3wj55kK5t&name=pdf" style="color: black;">Winning Amazon KDD Cup'23</a>  
+                                        <br><b>Time: </b> 2:50-3:25PM 
+                                      </li>
+                                        <!-- <li>Short presentations by other winners (15 mins)</li> -->
+                                    </ul>
+                                  </p>
+                                    <p class="mb-1">
+                                        <ul>
+                                          <li><b>Team:</b> gpt_bot   
+                                          <br><b>Title:</b> <a href="https://openreview.net/attachment?id=ccNBG7UOlr&name=pdf" style="color: black;"> A Hybrid Approach of Statistics and Embeddings for Multilingual and Multi-Locale Recommendation </a>
+                                          <br><b>Time:</b> 3:25-3:40PM   
+                                          </li>
+                                        </ul>
+                                    </p>
+
+                                    <p class="mb-1">
+                                        <ul>
+                                          <li><b>Team:</b> We Bare Bears  
+                                          <br><b>Title:</b> <a href="https://openreview.net/pdf?id=K4h7LbK6SK" style="color: black;">Statistical and Generative Models with subtitle Extraction for  Next Product Title Generation </a> 
+                                          <br><b>Time:</b> 3:40-3:55PM   
+                                          </li>
+                                        </ul>
+                                    </p>
+                                  <p class="mb-1">
+                                    <ul>
+                                      <li><b>Team:</b> MGTV-REC
+                                      <br><b>Title:</b> <a href="https://openreview.net/attachment?id=fHvoKhDyMA&name=pdf" style="color: black;">A Stacking and Transfer Learning with Diverse Similarity For Building Multilingual Session-based Recommendation Systems </a> 
+                                      <br><b>Time: </b> 3:55-4:15PM 
+                                      </li>
+                                      <br>
+                                      <li><b>Team:</b> ustc-gobble
+                                      <br><b>Title:</b> <a href="https://openreview.net/attachment?id=umFKIJkgeS&name=pdf" style="color: black;"> Co-visitation Meets Token Alignment for Next Product Title Generation</a>
+                                      <br><b>Time: </b> 4:15-4:25PM 
+                                      </li>
+                                      <br>
+                                      <li><b>Team:</b> unirec
+                                      <br><b>Title:</b> <a href="https://openreview.net/attachment?id=6MdSsLgDei&name=pdf" style="color: black;"> Practical Content-aware Session-based Recommendation: Deep Retrieve then Shallow Rank </a> 
+                                      <br><b>Time: </b> 4:25-4:35PM 
+                                      </li>                                                                            
+                                      <!--
+                                        <li>A Stacking and Transfer Learning with Diverse Similarity For Building Multilingual Session-based Recommendation Systems </li>
+                                        <li>A Hybrid Approach of Statistics and Embeddingsor Multilingual and Multi-Locale Recommendation</li>
+                                        <li>Practical Content-aware Session-based Recommendation: Deep Retrieve then Shallow Rank.</li>
+                                        -->
+                                    </ul>
+                                  </p>
+                                </div>
+                                <!--
+                                <a class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fa-solid fa-mug-hot" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Coffee Break</h5>
+                                    <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;3:00-3:30 PM</h5>
+                                  </div>
+                                </a>
+                                -->
+                                <div class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fa-solid fa-signs-post" style="color:#0275d8;"></i></span>&nbsp;&nbsp; Poster Session</h5>
+                                      <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;4:35-5:00 PM</h5>
+                                    </div>
+                                  <p class="mb-1">
+                                    <ul>
+                                      <li><b>Papers:</b> <a href="https://openreview.net/group?id=KDD.org/2023/Workshop/Cup" style="color: black;">OpenReview</a>  </li>
+                                      <li><b>Posters:</b> <a href="https://github.com/kddcup23/kddcup23.github.io/tree/main/posters" style="color: black;">Check here</a>  </li>
+
+                                      </li>
+                                      <!--
+                                        <li>A Stacking and Transfer Learning with Diverse Similarity For Building Multilingual Session-based Recommendation Systems </li>
+                                        <li>A Hybrid Approach of Statistics and Embeddingsor Multilingual and Multi-Locale Recommendation</li>
+                                        <li>Practical Content-aware Session-based Recommendation: Deep Retrieve then Shallow Rank.</li>
+                                        -->
+                                    </ul>
+                                  </p>
+                                  </div>
+                                <!--
+                                <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fas fa-bars-progress" style="color:#0275d8;"></i></span>&nbsp;&nbsp;All Tasks: Interesting Approaches</h5>
+                                      <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;4:00-4:50 PM</h5>
+                                    </div>
+                                -->
+                                    <!--
+                                    <p class="mb-1">
+                                        <ul>
+                                            <li>TFKD Solution for KDD Cup 2022 Amazon Product Search</li>
+                                            <li>A Boring-yet-effective Approach for the Product Ranking Task of the Amazon KDD Cup 2022</li>
+                                            <li>CMB AI Lab at KDD Cup 2022 ESCI Task2 and Task3: A Domain Adapted PLM with Context Enhancement for Query-Product Classification</li>
+                                            <li>A Multi-model Fusion Approach for Product Classification and Product Substitute Identification on Shopping Queries Data</li>
+                                            <li>KDD Cup 2022 Multiclass Product Classification: Team MetaSoul Solution</li>
+                                            <li>Predicting Query-Item Relationship using Adversarial Training and Robust Modeling Techniques</li>
+                                        </ul>
+                                     </p>
+                                     -->
+                                </a>
+                                <!--
+                                <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fas fa-book" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Closing</h5>
+                                      <h5><span><i class="fas fa-clock" style="color:#0275d8;"></i></span>&nbsp;&nbsp;4:50-5:00 PM</h5>
+                                    </div>
+                                    <p class="mb-1">Concluding remarks by organizers.</p>
+                                </a>
+                                -->
+                            </div>             
+                </div>
+            </div>
+        </section>
+
+        <!-- Accepted papers section-->
+        <section style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="papers">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">ACCEPTED PAPERS</h2>
+                        <div class="list-group list-group-flush">
+                          In total, we have accepted 15 submissions including 6 oral presentations and 8 poster presentationss. The accepted submission are publicly available at OpenReview page:  
+                        <a href="https://openreview.net/group?id=KDD.org/2023/Workshop/Cup">https://openreview.net/group?id=KDD.org/2023/Workshop/Cup</a> 
+                          
+                            <a class="list-group-item list-group-item-action">
+                                <h6>Nvidia: Winning Amazon KDD Cup'23</h6>
+                                &nbsp;<span class="badge alert-success"><i class="fas fa-trophy"></i> Task 1</span>
+                                &nbsp;<span class="badge alert-danger"><i class="fas fa-trophy"></i> Task 2</span> 
+                                &nbsp;<span class="badge alert-warning"><i class="fas fa-trophy"></i> Task 3</span><br>                                
+                                Authors: Chris Deotte, Kazuki onodera, Jean-Francois Puget, Benedikt Schifferer, Gilberto Titericz                              
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=J3wj55kK5t" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>      <br> 
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>A Stacking and Transfer Learning with Diverse Similarity For Building Multilingual Session-based Recommendation Systems</h6>
+                                &nbsp;<span class="badge alert-danger"><i class="fas fa-trophy"></i> Task 1</span> 
+                                &nbsp;<span class="badge alert-danger"><i class="fas fa-trophy"></i> Task 2</span> <br>
+                                Authors: Jiangwei Luo, Zhouzhou He, Ye Tang, Wentao Tang, Li Cheng                              
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=fHvoKhDyMA" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>        <br>
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>A Hybrid Approach of Statistics and Embeddings for Multilingual and Multi-Locale Recommendation</h6>
+                                &nbsp;<span class="badge alert-warning"><i class="fas fa-trophy"></i> Task 2</span><br>                                
+                                Authors: Weijia Zhang, Jin Zhan, Zhongshan Huang, Lu Wang, Qiang Wang
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=ccNBG7UOlr" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>          <br>                                                
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>Statistical and Generative Models with Subtitle Extraction for Next Product Title Generation</h6>
+                                &nbsp;<span class="badge alert-warning"><i class="fas fa-trophy"></i> Task 3</span><br>                                
+                                Authors: Honghee Lee, Youngjae Chang, Kyuri Choi, Jongwuk Lee, Youngjoong Ko.                                                             
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=K4h7LbK6SK" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>      <br>
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>Practical Content-aware Session-based Recommendation: Deep Retrieve then Shallow Rank</h6>
+                                &nbsp;<span class="badge alert-success"><i class="fas fa-trophy"></i> Task 1</span><br>
+                                Authors: Yuxuan Lei, Xiaolong Chen, Defu Lian, Peiyan Zhang, Jianxun Lian, Chaozhuo Li, Xing Xie.                              
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=6MdSsLgDei" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>          <br>                 
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>Co-visitation Meets Token Alignment for Next Product Title Generation</h6>
+                                &nbsp;<span class="badge alert-warning"><i class="fas fa-trophy"></i> Task 3</span><br>                                
+                                Authors: Chenwang Wu, Leyan Deng, Zhihao Zhu, Defu Lian                      
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=umFKIJkgeS" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>      <br>                     
+                            <a class="list-group-item list-group-item-action ">
+                                <h6>Next Product Title Generation in E-commerce: Rule-based Methods and Autoencoder Model</h6>
+                                Authors: Junya Miyamoto, Shinnosuke Hirano, Soma Makino, Kazuya Uekado, Xinyi Lao.                              
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=dNUVMFN1Km" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>        <br>                   
+                            <a class="list-group-item list-group-item-action">
+                                <h6>Candidate Reranking Solution using Many Variant Features for KDDCup2023, Team YAMALEX Solution</h6>
+                                Authors: Hiroki Yamamoto, Takashi Sasaki, Shin Higuchi, Tomonori Fujiwara, Shun Yoshioka.                          
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=Oq0OHYDiSd" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>      <br>                     
+                            <a class="list-group-item list-group-item-action">
+                                <h6>6th Place Solution to Amazon KDD Cup '23 Task2: Next Product Recommendation for Underrepresented Languages</h6>
+                                Authors: Chiaki Ichimura, Daiki Toda.                           
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=xl144pDLaX" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>                                                    
+                            <a class="list-group-item list-group-item-action">
+                                <h6>Language-Enhanced Session-Based Recommendation with Decoupled Contrastive Learning</h6>
+                                Authors: Zhipeng Zhang, Piao Tong, YINGWEI MA, Qiao Liu, Xujiang Liu, Xu Luo.                             
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://kddcup23.github.io/papers/8_language.pdf" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>         <br>                  
+                            <a class="list-group-item list-group-item-action">
+                                <h6>Prediction of next product title by simple deletion of the last word</h6>
+                                Authors: Meisaku Suzuki, Ryo Koyama, Shin Ishiguro, Shunya Imada, Yuya Kunimoto.              
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=j18hlIfBPX" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>        <br>                                                                                              
+                            <a class="list-group-item list-group-item-action">
+                                <h6>A completely locale-independent session-based recommender system by leveraging trained model</h6>
+                                Authors: Yu Tokutake, Chihiro Yamasaki, Yongzhi Jin, Ayuka Inoue, Kei Harada.                                                      
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=IHK0Xj6kRU" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>   <br>
+                            <a class="list-group-item list-group-item-action">
+                                <h6>Word Filtering Approach for Next Product Title Generation</h6>
+                                Authors: Yusuke Fukushima, Keiichi Ochiai, Yoshitaka Inoue, Masato Hashimoto, Sho Maeoki.                                                           
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://kddcup23.github.io/papers/2_word.pdf" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>   <br>
+                            <a class="list-group-item list-group-item-action">
+                                <h6>A Two-stage Ranking Framework for Multilingual Recommendation(Team:AIDA)</h6>
+                                Authors: Shijie Liu, Chenliang Zhang, Xutao Han, Wen Wu, Wei Zhang.                                                           
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <a href="https://openreview.net/pdf?id=0XrovX52cO" class="btn btn-secondary" role="button" target="_blank">Paper</a>
+                                </div>
+                            </a>   <br>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Organizers section-->
+        <section class="bg-light" style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4"  id="organizers">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">ORGANIZERS</h2>
+                        <br><br>
+                        <div class="row">
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="http://cse.msu.edu/~jinwei2/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/wei jin.jpg" alt="Wei Jin"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="http://cse.msu.edu/~jinwei2/"><b>Wei Jin</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://www.tangxianfeng.net/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/xianfeng tang.jpg" alt="Xianfeng Tang"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://www.tangxianfeng.net/"><b>Xianfeng Tang</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://hsqmlzno1.github.io/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/zheng li2.jpg" alt="Zheng Li"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://hsqmlzno1.github.io/"><b>Zheng Li</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://hmjianggatech.github.io/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/haoming jiang.jpg" alt=""></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://hmjianggatech.github.io/"><b>Haoming Jiang</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://haitaomao.github.io/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/haitao mao  new.png" alt=""></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://haitaomao.github.io/"><b>Haitao Mao</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="http://chen-luo.com/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/luochen_2.jpg" alt="Chen Luo"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="http://chen-luo.com/"><b>Chen Luo</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://scholar.google.com/citations?user=pNYuJQIAAAAJ&hl=en&oi=ao">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/hanqing.jpeg" alt=""></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://scholar.google.com/citations?user=pNYuJQIAAAAJ&hl=en&oi=ao"><b>Hanqing Lu</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="http://www.cse.msu.edu/~tangjili/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/jiliang.jpg" alt="Jiliang Tang"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="http://www.cse.msu.edu/~tangjili/"><b>Jiliang Tang</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://scholar.google.com/citations?user=qSOxydEAAAAJ">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/bing yin.jpg" alt="Bing Yin"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://scholar.google.com/citations?user=qSOxydEAAAAJ"><b>Bing Yin</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://sites.google.com/site/mailtosuka/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/Karthik Subbian.jpg" alt="Karthik Subbian"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://sites.google.com/site/mailtosuka/"><b>Karthik Subbian</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/monica.jpeg" alt="Monica Cheng"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href=""><b>Monica Cheng</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://faculty.ist.psu.edu/szw494/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/suhang wang.jpg" alt="Suhang Wang"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://faculty.ist.psu.edu/szw494/"><b>Suhang Wang</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="http://web.cs.ucla.edu/~yzsun/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/yizhou sun.jpg" alt="Yizhou Sun"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="http://web.cs.ucla.edu/~yzsun/"><b>Yizhou Sun</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/zhen li.jpg" alt="Zhen Li"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href=""><b>Zhen Li</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                        <div class="mt-5 col-sm-2">
+                            <a class="navbar-brand js-scroll-trigger" href="https://zhengyang-wang.github.io/">
+                            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto" src="./assets/zhengyang wang new.jpg" alt="Zhengyang Wang"></span>
+                            <p style="text-align: center;">
+                                <a style="color:#0275d8; text-decoration: none;" target="_blank" href="https://zhengyang-wang.github.io/"><b>Zhengyang Wang</b></a><br>
+                                <!-- <span><i class="fa-solid fa-school"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://vt.edu/">Virginia Tech</a><br>
+                                <span><i class="fa-brands fa-amazon"></i></span>&nbsp;&nbsp;
+                                <a style="color:#E77725; text-decoration: none;" href="https://www.amazon.science/">Amazon Scholar</a> -->
+                            </p>                            
+                            </a>
+                        </div>
+                    
+                    </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Submission Guidelines section-->
+        <section style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="submission">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">SUBMISSION GUIDELINES</h2>
+                        <p style="text-align: justify;">
+                            The objective of this workshop is to discuss the winning submissions of the 
+                            Submissions to the Amazon KDD Cup 2023 is <b>single</b>-blind (author names and affiliations should be listed). 
+                            <b>Everyone in the Top-10 leaderboard submissions will have a guaranteed opportunity for an in-person oral/poster presentation.</b>
+                            Other submissions will be evaluated by a committee based on their novelty and insights. 
+                            The deadline for the submissions is <del>July 20, 2023</del> <ins style="color: red;">July 23, 2023</ins> (Anywhere on Earth time).
+                            Accepted submissions will be notified latest by August 1, 2023. 
+                            Please note that the KDD Cup workshop will have <b>no proceedings</b> and the authors retain <b>full rights</b> to submit or post the paper at any other venue.
+                        <!-- </p> -->
+                        <br>
+                        <br>Link to the submission website: <a href="https://openreview.net/group?id=KDD.org/2023/Workshop/Cup">https://openreview.net/group?id=KDD.org/2023/Workshop/Cup</a> 
+                        </p>
+                        Submissions describing 1 or 2 tasks are limited to a maximum of 4 pages, including all content and references, and must be in PDF format. However, submissions describing 3 tasks can have up to 6 pages. 
+                        Please use ACM Conference templates (two column format). One recommended setting for Latex file is: <code>\documentclass[sigconf, review]{acmart}</code>. 
+                        Template guidelines are here: <a href="https://www.acm.org/publications/proceedings-template">https://www.acm.org/publications/proceedings-template</a>. 
+                        <br>
+                        <p style="text-align: justify;">
+                        In addition, authors can provide an optional one page supplement at the end of their submitted paper (it needs to be in the same PDF file) 
+                        focused on reproducibility. After the submission deadline, the names and order of authors cannot be changed. 
+                        <!--
+                        The paper organization can loosely follow the following format:
+                        <ul>
+                            Paper Title and Author Details
+                            <li>Abstract</li>
+                            <li>Introduction</li>
+                            <li>Related Work</li>
+                            <li>Methedology</li>
+                            <li>Experiment</li>
+                            <li>Conclusion</li>
+                            <li>References</li>
+                            
+                        </ul>
+                        -->
+                        </p>
+                        <p>It would be great if you could cite our dataset paper available at <a href="https://arxiv.org/abs/2307.09688">ArXiv</a>. <br>
+                        
+                        <code>
+                            @article{jin2023amazon,<br>
+                                title={Amazon-M2: A Multilingual Multi-locale Shopping Session Dataset for Recommendation and Text Generation},<br>
+                                author={Wei Jin and Haitao Mao and Zheng Li and Haoming Jiang and Chen Luo and Hongzhi Wen and Haoyu Han and Hanqing Lu and Zhengyang Wang and Ruirui Li and Zhen Li and Monica Xiao Cheng and Rahul Goutam and Haiyang Zhang and Karthik Subbian and Suhang Wang and Yizhou Sun and Jiliang Tang and Bing Yin and Xianfeng Tang},<br>
+                                journal={arXiv preprint arXiv:2307.09688}, <br>
+                                year={2023},<br>
+                          }<br>
+                        </code>
+                    If you have any questions, please concat us at jinwei2@msu.edu and xianft@amazon.com. 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Submission Dates section-->
+        <section class="bg-light" style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="dates">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">SUBMISSION DATES</h2>
+                        <p style="text-align: center;">Link to the submission website: https://openreview.net/group?id=KDD.org/2023/Workshop/Cup <br>
+                            <!-- All deadlines are given in Anywhere on Earth time. -->
+                        </p>
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-book-open" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Submission Site Opens</h5>
+                                    <h5><span><i class="fas fa-calendar" style="color:#0275d8;"></i></span>&nbsp;&nbsp;June 20, 2023 (AoE Time)</h5>
+                                  </div>
+                                </a>
+                                <!--
+                                <a class="list-group-item list-group-item-action">
+                                  <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><span><i class="fas fa-bars-progress" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Community Town Hall Event</h5>
+                                    <h5><span><i class="fas fa-calendar" style="color:#0275d8;"></i></span>&nbsp;&nbsp;July 20, 2022 9AM EST</h5>
+                                  </div>
+                                </a>
+                                -->
+                                <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fas fa-book" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Paper Submission Deadline</h5>
+                                      <h5><span><i class="fas fa-calendar" style="color:#0275d8;"></i></span>&nbsp;&nbsp;<del>July 20</del> July 23, 2023 (AoE Time)</h5>
+                                    </div>
+                                </a>
+                                <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fas fa-circle-check" style="color:#0275d8;"></i></span>&nbsp;&nbsp;Paper Acceptance Notification</h5>
+                                      <h5><span><i class="fas fa-calendar" style="color:#0275d8;"></i></span>&nbsp;&nbsp;July 27, 2023 (AoE Time)</h5>
+                                    </div>
+                                </a>
+                                <a class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                      <h5 class="mb-1"><span><i class="fas fa-calendar-check" style="color:#0275d8;"></i></span>&nbsp;&nbsp;KDDCup Workshop Event</h5>
+                                      <h5><span><i class="fas fa-calendar" style="color:#0275d8;"></i></span>&nbsp;&nbsp;August 9, 2023 1PM PST</h5>
+                                    </div>
+                                </a>
+                            </div>             
+                </div>
+            </div>
+        </section>        
+
+
+        </section>
+        <!-- Data section-->
+        <section style="padding-top: 4%; padding-bottom: 4%;">
+            <div class="container px-4" id="data">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <br>
+                        <h2 style="text-align: center;">DATA</h2>
+                        <p>The data and its license is available at the following link.<br>
+                            <a href="https://www.aicrowd.com/challenges/amazon-kdd-cup-23-multilingual-recommendation-challenge">https://www.aicrowd.com/challenges/amazon-kdd-cup-23-multilingual-recommendation-challenge</a><br>
+                            If you plan to use this dataset for your own research, please cite this paper. <br>
+                        </p>
+                        <code>
+                            @article{jin2023amazon,<br>
+                                title={Amazon-M2: A Multilingual Multi-locale Shopping Session Dataset for Recommendation and Text Generation},<br>
+                                author={Wei Jin and Haitao Mao and Zheng Li and Haoming Jiang and Chen Luo and Hongzhi Wen and Haoyu Han and Hanqing Lu and Zhengyang Wang and Ruirui Li and Zhen Li and Monica Xiao Cheng and Rahul Goutam and Haiyang Zhang and Karthik Subbian and Suhang Wang and Yizhou Sun and Jiliang Tang and Bing Yin and Xianfeng Tang},<br>
+                                journal={arXiv preprint arXiv:2307.09688}, <br>
+                                year={2023},<br>
+                          }<br>
+                        </code>
+                        <br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+          <div class="container px-4"><p class="m-0 text-center text-white"><a href="https://kddcup23.github.io/papers/0.pdf" style="color: inherit; text-decoration: none;">Copyright</a> &copy; 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/f3573b1642.js" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script>
+            
+            window.addEventListener("resize", () => {
+                const doms = document.getElementsByClassName("img-fluid");
+                const width = doms[0].clientWidth;
+                console.log(width)
+            })
+
+        </script>
+    </body>
+</html>
